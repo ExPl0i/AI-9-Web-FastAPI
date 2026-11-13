@@ -1,0 +1,5 @@
+# Версия FastAPI зафиксирована: от нее зависят тексты ошибок и вид страницы /docs.
+# Вместе с fastapi[standard] ставятся Uvicorn, httpx (для TestClient), python-multipart и команда fastapi.
+fastapi[standard]==0.162.0
+pytest>=8.0
+requests>=2.31

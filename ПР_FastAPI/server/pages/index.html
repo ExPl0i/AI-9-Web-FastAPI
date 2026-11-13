@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Покрытие – главная</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <img src="/static/logo.svg" alt="" width="48" height="42">
+  <nav><a href="/">Главная</a> · <a href="/surfaces">Покрытия</a> · <a href="/docs">Документация</a></nav>
+</header>
+<h1>Сервис «Покрытие»</h1>
+<p>Учебный сервис беспилотного автомобиля. Теперь страницы и данные отдает приложение на FastAPI, а не сервер на сокетах из занятия Т4.Б1.1.</p>
+
+<h2>Калькулятор тормозного пути</h2>
+<p>Форма отправляет запрос методом GET к программному интерфейсу <code>/api/braking</code>. Ответ придет в формате JSON.</p>
+<form action="/api/braking" method="get">
+  <fieldset>
+    <legend>Условия торможения</legend>
+    <label for="v">Скорость, км/ч</label>
+    <input id="v" name="v" type="number" min="1" max="200" step="1" value="60" required>
+    <label for="mu">Коэффициент сцепления</label>
+    <select id="mu" name="mu">
+      <option value="0.7">0.7 – сухой асфальт</option>
+      <option value="0.4">0.4 – мокрый асфальт</option>
+      <option value="0.5">0.5 – грунт</option>
+      <option value="0.15">0.15 – снег и лед</option>
+    </select>
+    <label for="t">Время реакции, с</label>
+    <input id="t" name="t" type="number" min="0.1" max="3" step="0.1" value="1">
+  </fieldset>
+  <button type="submit">Рассчитать</button>
+</form>
+
+<h2>Примеры адресов</h2>
+<ul>
+  <li><a href="/api/braking?v=60&amp;mu=0.7">/api/braking?v=60&amp;mu=0.7</a> – тормозной путь на сухом асфальте</li>
+  <li><a href="/api/braking?v=-10&amp;mu=0.7">/api/braking?v=-10&amp;mu=0.7</a> – отрицательная скорость, код 422</li>
+  <li><a href="/api/surfaces">/api/surfaces</a> – список покрытий в формате JSON</li>
+  <li><a href="/index.html">/index.html</a> – старый адрес, код 301 и перенаправление</li>
+  <li><a href="/nowhere">/nowhere</a> – несуществующий адрес, код 404</li>
+  <li><a href="/docs">/docs</a> – автоматическая документация программного интерфейса</li>
+</ul>
+</body>
+</html>
